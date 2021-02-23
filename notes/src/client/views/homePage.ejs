@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Home Page</title>
+    </head>
+ <body>
+  <% for(var i=0;i< notes.length;i++){ %>
+  <br/><br/>
+   <p id="output<%= notes[i]._id %>" ><%= notes[i].title %> </p>
+   <br/>
+   <p id="output<%= notes[i]._id %>" ><%= notes[i].description %></p>   
+  <br/>  
+  <form  action="/delete/<%= notes[i]._id %>">
+  <button>Delete</button>
+  </form>
+  <form style="display: none;" id="editForm('<%= notes[i]._id%>')" action="/update/<%= notes[i]._id %> " method="POST">
+  <button id="<%= %>">Update</button>
+</form>
+  <% } %>    
+   <h4><b>Add a new note</b></h4>  
+  <form action="/add" method="POST" >
+   <input type="text" name="title" id="notes" placeholder="Enter new note title" required>
+   <input type="text" name="description" id="description" placeholder="Enter description for new note" required>
+  <button type="submit" id="create">Create</button>
+  </form>   
+ </body>   
+</html>
